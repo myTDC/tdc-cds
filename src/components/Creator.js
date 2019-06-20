@@ -2,19 +2,30 @@ import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import './Creator.css';
-import Reader from './Reader';
+//import Reader from './Reader';
+
+function makeid(length) {
+	var result = '';
+	var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	var charactersLength = characters.length;
+	for (var i = 0; i < length; i++) {
+		result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	}
+	return result;
+}
 
 const Section = (props) => {
 	const [editorState, setEditorState] = useState('');
+	const handleOnChange = (input) => {
+		setEditorState(input);
+	};
+
 	return (
 		<React.Fragment>
 			<h5>Section {props.sno}</h5>
 			<div className='section-grid'>
 				<div>
-					<ReactQuill value={editorState} onChange={setEditorState} />
-				</div>
-				<div>
-					<ReactQuill value={editorState} onChange={setEditorState} />
+					<ReactQuill value={editorState} onChange={handleOnChange} />
 				</div>
 			</div>
 		</React.Fragment>
@@ -22,17 +33,17 @@ const Section = (props) => {
 };
 
 const Creator = (props) => {
-	let count = 0;
-	const [children, setChildren] = useState([0]);
-	const addSection = () => {
-		setChildren([...children, ++count]);
+	let [myArray, setMyArray] = useState([makeid(5)]);
+
+	const handleAdd = () => {
+		setMyArray([...myArray, makeid(5)]);
 	};
 	return (
-		<div className='main-grid'>
-			{children.map((id) => (
-				<Section key={id} sno={++count} />
+		<div id='parent' className='main-grid'>
+			{myArray.map((unique, id) => (
+				<Section key={unique} sno={++id} />
 			))}
-			<button onClick={addSection}>Add</button>
+			<button onClick={handleAdd}>Add</button>
 		</div>
 	);
 };

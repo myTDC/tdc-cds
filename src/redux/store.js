@@ -1,7 +1,7 @@
 import { configureStore, getDefaultMiddleware } from 'redux-starter-kit';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import throttle from 'lodash/throttle';
+//import throttle from 'lodash/throttle';
 import { courseReducer } from './reducers/reducer';
 
 /* export const loadState = () => {
