@@ -28,16 +28,17 @@ function ReaderView(props) {
 							<p className='fontOswald metaData'>
 								By {metaData[1]} &nbsp; &nbsp;<span className='date'>{metaData[0]}</span>
 							</p>
-							<h3 className='subHeading'>{sectionData.subHeading[page]}</h3>
-							{sectionData.content[page].map((para, i) => (
+							{/*<h3 className='subHeading'>{sectionData.subHeading[page]}</h3>*/}
+							<div dangerouslySetInnerHTML={{ __html: sectionData.content[page - 1] }} />
+							{/* sectionData.content[page].map((para, i) => (
 								<p key={i}>{para}</p>
-							))}
+							)) */}
 							<Control />
 						</div>
 					) : null}
 					{showData ? (
 						<div className='col readerMedia'>
-							<img width='100%' src={sectionData.media[page]} alt='' />
+							<img width='100%' src={sectionData.media[page - 1]} alt='' />
 						</div>
 					) : null}
 				</div>
@@ -48,16 +49,19 @@ function ReaderView(props) {
 	/***********************************************************************************/
 	/*--------------------component for reader control bar-----------------------------*/
 	/***********************************************************************************/
-	const size = Object.keys(sectionData.content).length;
+	const size = sectionData.content.length;
 	const Control = () => {
 		//Hook for reader control bar
 		let initialButton = { prev: true, next: false };
 		const [isDisabled, setDisabled] = useState(initialButton);
 		useEffect(() => {
-			if (page > 1) setDisabled({ prev: false });
-			if (page === 1) setDisabled({ prev: true });
-			if (page === size) setDisabled({ next: true });
-		}, [isDisabled]);
+			if (size === 1) setDisabled({ prev: true, next: true });
+			else {
+				if (page > 1) setDisabled({ ...initialButton, prev: false });
+				if (page === 1) setDisabled({ ...initialButton, prev: true });
+				if (page === size) setDisabled({ prev: false, next: true });
+			}
+		}, [initialButton, isDisabled]);
 
 		//Hook for indicator form field
 		const [inputPage, setInputPage] = useState(page);

@@ -1,12 +1,43 @@
 .section-grid {
 	display: grid;
 	grid-template-rows: repeat(1, fit-content);
+	grid-template-columns: fit-content(50%);
 	grid-gap: 10px;
 	grid-auto-flow: column;
+	padding: 0 1rem 0 1rem;
+}
+
+.section-grid > form {
+	justify-self: center;
+}
+
+.section-grid > form > h4 {
+	padding: 0;
+	margin: 0;
+}
+
+.section-grid > form > input {
+	width: 20rem;
+	height: 2rem;
+	margin: 1rem 0 1rem 0;
+	padding: 0 0.5rem 0 0.5rem;
+	margin: 0 0 1rem 0;
+	border: none;
+	border-bottom: 2px solid #00e676;
+	box-shadow: none;
+	transition: box-shadow 1s;
+}
+
+.section-grid > form > input:focus {
+	box-shadow: 0rem 0.1rem 0.2rem lightgreen;
 }
 
 .main-grid {
 	display: grid;
 	grid-gap: 10px;
 	grid-auto-flow: row;
+}
+
+.quill {
+	height: 5rem;
 }

@@ -11,6 +11,9 @@ const ModuleCard = (props) => {
 				{modules.map((mod, i) => (
 					<li key={i}>
 						<Link to={`/reader/${props.courseTitle}/${i + 1}`}>{mod.heading}</Link>
+						<Link to={`/contentCreator/${props.courseTitle}/${i + 1}`}>
+							<button> Edit </button>
+						</Link>
 					</li>
 				))}
 			</ul>

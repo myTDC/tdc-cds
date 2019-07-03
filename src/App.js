@@ -29,7 +29,7 @@ function App() {
 					<Router>
 						<Dashboard courses={courses} path='/dashboard' />
 						<ReaderNavigator path='/reader/:course/:module' />
-						<Creator path='/contentCreator' />
+						<Creator path='/contentCreator/:course/:module' />
 					</Router>{' '}
 				</>
 			)}
