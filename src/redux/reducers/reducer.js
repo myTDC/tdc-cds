@@ -12,7 +12,11 @@ export const courseReducer = createReducer(initialState, {
 		state.courses[action.course][action.module] = {
 			heading: [...action.heading],
 			metaData: [action.date, action.author],
-			sectionData: { content: [...action.content], media: [...action.media] },
+			sectionData: {
+				subHeading: [...action.subHeading],
+				content: [...action.content],
+				media: [...action.media],
+			},
 		};
 	},
 });

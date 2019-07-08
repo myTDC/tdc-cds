@@ -22,13 +22,17 @@ function ReaderView(props) {
 				<div className='reader maxHeight'>
 					{showData ? (
 						<div id='readerText' className='col readerText'>
-							<h2 className='fontOswald'>
-								{heading[0]} <span className='fontOswald highlight'>{heading[1]}</span>{' '}
-							</h2>
-							<p className='fontOswald metaData'>
-								By {metaData[1]} &nbsp; &nbsp;<span className='date'>{metaData[0]}</span>
-							</p>
-							{/*<h3 className='subHeading'>{sectionData.subHeading[page]}</h3>*/}
+							{page === 1 ? (
+								<>
+									<h2 className='fontOswald'>
+										{heading[0]} <span className='fontOswald highlight'>{heading[1]}</span>{' '}
+									</h2>
+									<p className='fontOswald metaData'>
+										By {metaData[1]} &nbsp; &nbsp;<span className='date'>{metaData[0]}</span>
+									</p>
+								</>
+							) : null}
+							<h3 className='subHeading'>{sectionData.subHeading[page - 1]}</h3>
 							<div dangerouslySetInnerHTML={{ __html: sectionData.content[page - 1] }} />
 							{/* sectionData.content[page].map((para, i) => (
 								<p key={i}>{para}</p>
