@@ -28,7 +28,6 @@
 }
 
 .section-form > input {
-	width: 35rem;
 	min-height: 2rem;
 	margin: 1rem 0 1rem 0;
 	padding: 0 0.5rem 0 0.5rem;
@@ -39,8 +38,28 @@
 	transition: box-shadow 1s;
 }
 
+.form-media {
+	width: 35rem;
+}
+
+.form-subheading {
+	width: 50rem;
+	font-size: 2rem;
+	font-family: 'Segoe UI', sans-serif;
+	font-weight: 600;
+	color: #404041;
+}
+
 .section-form > input:focus {
 	box-shadow: 0rem 0.1rem 0.2rem lightgreen;
+}
+
+.green {
+	color: #00c853;
+}
+
+.red {
+	color: crimson;
 }
 
 .main-grid {
@@ -53,7 +72,6 @@
 	background: none;
 	border: none;
 	font-size: 1.5rem;
-	color: red;
 }
 
 .quill {
@@ -106,13 +124,6 @@
 	transition: box-shadow 1s;
 }
 
-.subheading {
-	font-size: 2rem;
-	font-family: 'Segoe UI', sans-serif;
-	font-weight: 600;
-	color: #404041;
-}
-
 .control {
 	position: fixed;
 	right: 1rem;
@@ -126,7 +137,7 @@
 	font-size: 1.5rem;
 	color: #4a148c;
 	font-family: 'Segoe UI', sans-serif;
-	font-weight: 200;
+	font-weight: 400;
 	cursor: pointer;
 }
 
